@@ -50,7 +50,7 @@ public class Pos {
 
       for (String barcodePromo : promo1.barcodes) {
         if (barcode.equals(barcodePromo)) {
-          double countToPay = count - (int)(count/3);
+          double countToPay = count - (int) (count / 3);
           subtotal = countToPay * price;
           break;
         }
@@ -60,5 +60,34 @@ public class Pos {
       receiptItems.add(new ReceiptItem(cartItem, subtotal, savedMoney));
     }
     return receiptItems;
+  }
+
+  public String printDetail(List<ReceiptItem> receiptItems) {
+    String text = "***<没钱赚商店>收据***\n";
+    double total = 0;
+    double saveTotal = 0;
+
+    for (int i = 0; i < receiptItems.size(); i++) {
+      String name = receiptItems.get(i).cartItem.getName();
+      double count = receiptItems.get(i).cartItem.getCount();
+      double price = receiptItems.get(i).cartItem.getPrice();
+      String unit = receiptItems.get(i).cartItem.getUnit();
+      double subtotal = receiptItems.get(i).subtotal;
+
+      total += subtotal;
+      saveTotal += receiptItems.get(i).savedMoney;
+
+      text += "名称：" + name +
+        "，数量：" + count + unit + "，单价：" +
+        price + "(元)，小计：" + subtotal + "(元)\n";
+
+    }
+
+    text+="----------------------\n" +
+      "总计："+ total +"(元)\n"+
+      "节省："+ saveTotal +"(元)\n" +
+      "**********************";
+
+    return text;
   }
 }

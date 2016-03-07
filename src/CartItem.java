@@ -11,6 +11,18 @@ public class CartItem {
     return this.item.barcode;
   }
 
+  public String getName() {
+    return this.item.name;
+  }
+
+  public double getCount() {
+    return this.count;
+  }
+
+  public String getUnit() {
+    return this.item.unit;
+  }
+
   public double getPrice() {
     return this.item.price;
   }
