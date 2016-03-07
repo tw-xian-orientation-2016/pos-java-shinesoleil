@@ -6,4 +6,8 @@ public class BarcodeCount {
     this.barcode = barcode;
     this.count = count;
   }
+
+  public void addCount(float count) {
+    this.count += count;
+  }
 }
