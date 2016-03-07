@@ -33,4 +33,32 @@ public class Pos {
 
     return cartItems;
   }
+
+  public List<ReceiptItem> getReceiptItems(List<CartItem> cartItems, List<Promotion> promos) {
+    List<ReceiptItem> receiptItems = new ArrayList<ReceiptItem>();
+
+    for (CartItem cartItem : cartItems) {
+      String barcode = cartItem.getBarcode();
+
+      Promotion promo1 = promos.get(0);
+
+
+      double price = cartItem.getPrice();
+      double count = cartItem.count;
+      double originalSubtotal = price * count;
+      double subtotal = originalSubtotal;
+
+      for (String barcodePromo : promo1.barcodes) {
+        if (barcode.equals(barcodePromo)) {
+          double countToPay = count - (int)(count/3);
+          subtotal = countToPay * price;
+          break;
+        }
+      }
+      double savedMoney = originalSubtotal - subtotal;
+
+      receiptItems.add(new ReceiptItem(cartItem, subtotal, savedMoney));
+    }
+    return receiptItems;
+  }
 }

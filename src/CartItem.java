@@ -6,4 +6,12 @@ public class CartItem {
     this.item = item;
     this.count = count;
   }
+
+  public String getBarcode() {
+    return this.item.barcode;
+  }
+
+  public double getPrice() {
+    return this.item.price;
+  }
 }

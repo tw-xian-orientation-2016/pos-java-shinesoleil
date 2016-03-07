@@ -1,9 +1,9 @@
 public class ReceiptItem {
   public CartItem cartItem;
-  public float subtotal;
-  public float savedMoney;
+  public double subtotal;
+  public double savedMoney;
 
-  public ReceiptItem(CartItem cartItem, float subtotal, float savedMoney) {
+  public ReceiptItem(CartItem cartItem, double subtotal, double savedMoney) {
     this.cartItem = cartItem;
     this.subtotal = subtotal;
     this.savedMoney = savedMoney;
